@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <link rel="icon" href="logo_aquatic_copia.ico" type="image/x-icon" />
+    <link rel="icon" href="logo_aquatic_copia.ico" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CD Aquatic Campanar - Open</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/open.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo" onclick="window.location.href='index.html'">
+        <img src="./images/logo aquatic.jpg" alt="Logo CD Aquatic Campanar" />
+        <span>CD Aquatic Campanar</span>
+      </div>
+       <!-- Botón hamburguesa -->
+       <button class="hamburger" aria-label="Abrir menú" id="hamburger-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav-menu" id="nav-menu">
+        <ul>
+          <li><a href="index.html" class="active">Inicio</a></li>
+          <li><a href="deportistas.html">Deportistas & Técnicos</a></li>
+          <li><a href="logros.html">Logros</a></li>
+          <li><a href="https://es-es.facebook.com/piscinacampanar">Piscina Campanar</a></li>
+          <li><a href="open.html">Open</a></li>
+          <li><a href="unete.html">Únete</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="plantilla">
+        <h1>Open CD Aquatic Campanar</h1>
+    
+        <section class="open-section">
+            <div class="open-container">
+            <img class="open-image" src="/images/open.webp" alt="Foto del Open" />
+            <div class="open-text">
+          </div>
+    
+          <div class="open-text">
+            <h2>Open CD Aquatic Campanar 2025</h2>
+            <p>
+                El Open de Natación Adaptada CD Aquatic Campanar es un evento anual que reúne a nadadores con y sin discapacidad en una jornada dedicada a la inclusión, la superación personal y el deporte de alto nivel. Organizado por el Club Deportivo Aquatic Campanar en colaboración con la Federació d’Esports Adaptats de la Comunitat Valenciana (FESA), este evento se celebra en el Poliesportiu Natzaret de València.  
+            </p>
+            <p>
+                A lo largo de sus ediciones, el Open ha contado con la participación de deportistas de diversas comunidades autónomas, incluyendo clubes como el Club Tritons Vila-real, el Club de Natación Adaptada de Alicante, Club Natación Mediterraneo y el Club Aquarium Alacant. Las competiciones abarcan una amplia gama de pruebas y categorías, permitiendo que nadadores de diferentes niveles y capacidades demuestren su talento y esfuerzo en un ambiente de respeto y compañerismo.
+            </p>
+            <p>
+                Más allá de la competición, el Open promueve valores fundamentales como la igualdad de oportunidades, la integración y la visibilidad del deporte adaptado. Es una celebración del espíritu deportivo donde cada brazada simboliza el compromiso con una sociedad más inclusiva y diversa. 
+            </p>
+            <p>
+                Este evento no solo destaca por la calidad de sus participantes, sino también por el entusiasmo del público y la dedicación de voluntarios y organizadores que hacen posible esta experiencia única. El Open CD Aquatic Campanar se ha consolidado como una cita imprescindible en el calendario deportivo de València, reflejando el compromiso de la ciudad con el deporte para todos.  
+            </p>
+          </div>
+        </section>
+      </main>
+      <section class="gallery">
+        <h2>Galería Open</h2>
+        <div class="galeria-grid">
+          <img src="./images/2017.webp" alt="Open 1" class="lightbox-img">
+          <img src="./images/axa.jpg" alt="Open 2" class="lightbox-img">
+          <img src="./images/club.jpeg" alt="Open 3" class="lightbox-img">
+          <img src="./images/fer.png" alt="Open 4" class="lightbox-img">
+          <img src="./images/elsa.jpg" alt="Open 5" class="lightbox-img">
+          <img src="./images/ctm.webp" alt="Open 6" class="lightbox-img">
+        </div>
+      </section>
+      
+      <!-- Lightbox -->
+      <div class="lightbox" id="lightbox">
+        <span class="close">&times;</span>
+        <span class="arrow prev">&#10094;</span>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="Imagen ampliada">
+        <span class="arrow next">&#10095;</span>
+      </div>
+      
+      <footer>
+        <p>&copy; 2025 CD Aquatic Campanar. Todos los derechos reservados.</p>
+      </footer>
+    <!-- bueno script-->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const hamburger = document.getElementById("hamburger-btn");
+    const navMenu = document.getElementById("nav-menu");
+
+    hamburger.addEventListener("click", function () {
+      navMenu.classList.toggle("show");
+      hamburger.classList.toggle("active"); // Para la animación
+    });
+  });
+</script>
+<script>
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.querySelector('.close');
+  const prevBtn = document.querySelector('.arrow.prev');
+  const nextBtn = document.querySelector('.arrow.next');
+  const images = document.querySelectorAll('.lightbox-img');
+
+  let currentIndex = 0;
+
+  function showImage(index) {
+    if (index < 0) index = images.length - 1;
+    if (index >= images.length) index = 0;
+    currentIndex = index;
+    lightboxImg.src = images[currentIndex].src;
+    lightboxImg.alt = images[currentIndex].alt;
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => {
+      currentIndex = index;
+      showImage(currentIndex);
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+
+  prevBtn.addEventListener('click', () => {
+    showImage(currentIndex - 1);
+  });
+
+  nextBtn.addEventListener('click', () => {
+    showImage(currentIndex + 1);
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = 'none';
+    }
+  });
+
+  // Opcional: Navegar con flechas del teclado
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.style.display === 'flex') {
+      if (e.key === 'ArrowRight') nextBtn.click();
+      if (e.key === 'ArrowLeft') prevBtn.click();
+      if (e.key === 'Escape') closeBtn.click();
+    }
+  });
+</script>
+
+
+<!-- bueno script-->
+    </body>
+    </html>
